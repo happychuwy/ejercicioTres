@@ -18,15 +18,8 @@
     El ejercicio se limita a únicamente código del lado de backend, es decir, no deberá usarse Javascript.
     El ejercicio no requiere CSS personalizado, puede usarse cualquier libreria/framework CSS para crear la interfaz gráfica
 */
-
-    if(isset($_POST['enviar']))
-    {
-        $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
-        $email = $_POST['email'];
-        $telefono = $_POST['telefono'];
-        $tema = $_POST['tema'];
-        $mensaje = $_POST['mensaje'];
-    }
+    include("sanitizarFormulario.php");
+    include("captcha.php");
 ?>
 
 <html>
@@ -39,7 +32,7 @@
     </head>
 
     <body>
-        <h1>Ejercicio 1 - Validación de formulario</h1>
+        <h1>Ejercicio 3 - Validación de formulario</h1>
         <br>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <fieldset id="fieldsetDatos" class="fieldsetDatos">
@@ -49,27 +42,33 @@
 
                 <div class="contenedorInput">
                     <label for="">Nombre</label>
-                    <input type="text" name="nombre">
+                    <input type="text" name="nombre" value="<?php if(isset($nombre))echo $nombre; ?>">
                 </div>
 
                 <div class="contenedorInput">
                     <label for="">Email</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" value="<?php if(isset($email))echo $email; ?>">
                 </div>
 
                 <div class="contenedorInput">
                     <label for="">Teléfono</label>
-                    <input type="text" name="telefono">
+                    <input type="text" name="telefono" value="<?php if(isset($telefono))echo $telefono; ?>">
                 </div>
 
                 <div class="contenedorInput">
                     <label for="">Tema</label>
-                    <input type="text" name="tema">
+                    <input type="text" name="tema" value="<?php if(isset($tema))echo $tema; ?>">
                 </div>
 
                 <div class="contenedorInput">
                     <label for="">Mensaje</label>
-                    <textarea name="mensaje" id="" cols="30" rows="5"></textarea>
+                    <textarea name="mensaje" id="" cols="30" rows="5" value=""><?php if(isset($mensaje))echo $mensaje; ?></textarea>
+                </div>
+
+                <div class="contenedorInput">
+                    <label></label>
+                    <input type="hidden" name="captcha" >
+                    <input type="button" name="captchaButton" value="captcha" onclick="document.write('<?php captcha() ?>');">
                 </div>
 
                 <div class="contenedorInput">
