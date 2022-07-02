@@ -18,6 +18,15 @@
     El ejercicio se limita a únicamente código del lado de backend, es decir, no deberá usarse Javascript.
     El ejercicio no requiere CSS personalizado, puede usarse cualquier libreria/framework CSS para crear la interfaz gráfica
 */
+
+    if(isset($_POST['enviar']))
+    {
+        $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
+        $email = $_POST['email'];
+        $telefono = $_POST['telefono'];
+        $tema = $_POST['tema'];
+        $mensaje = $_POST['mensaje'];
+    }
 ?>
 
 <html>
@@ -30,7 +39,9 @@
     </head>
 
     <body>
-        <form action="">
+        <h1>Ejercicio 1 - Validación de formulario</h1>
+        <br>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <fieldset id="fieldsetDatos" class="fieldsetDatos">
                 <legend>
                     INGRESA TUS DATOS
@@ -64,6 +75,10 @@
                 <div class="contenedorInput">
                     <input type="submit" name="enviar" value="Enviar">
                 </div>
+
+                <?php
+                    include("validarFormulario.php");
+                ?>
 
             </fieldset>
         </form>
