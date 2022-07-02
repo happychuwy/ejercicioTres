@@ -19,3 +19,53 @@
     El ejercicio no requiere CSS personalizado, puede usarse cualquier libreria/framework CSS para crear la interfaz gráfica
 */
 ?>
+
+<html>
+    <head>
+        <title>
+            Ejercicio 3 - Elihu Romero
+        </title>
+        <link rel="stylesheet" type="text/css" href="./css/index.css" />
+
+    </head>
+
+    <body>
+        <form action="">
+            <fieldset id="fieldsetDatos" class="fieldsetDatos">
+                <legend>
+                    INGRESA TUS DATOS
+                </legend>
+
+                <div class="contenedorInput">
+                    <label for="">Nombre</label>
+                    <input type="text" name="nombre">
+                </div>
+
+                <div class="contenedorInput">
+                    <label for="">Email</label>
+                    <input type="email" name="email">
+                </div>
+
+                <div class="contenedorInput">
+                    <label for="">Teléfono</label>
+                    <input type="text" name="telefono">
+                </div>
+
+                <div class="contenedorInput">
+                    <label for="">Tema</label>
+                    <input type="text" name="tema">
+                </div>
+
+                <div class="contenedorInput">
+                    <label for="">Mensaje</label>
+                    <textarea name="mensaje" id="" cols="30" rows="5"></textarea>
+                </div>
+
+                <div class="contenedorInput">
+                    <input type="submit" name="enviar" value="Enviar">
+                </div>
+
+            </fieldset>
+        </form>
+    </body>
+</html>

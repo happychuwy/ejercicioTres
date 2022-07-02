@@ -1,0 +1,25 @@
+.fieldsetDatos
+{
+    margin:auto;
+    margin-top: 60px;
+    width: 60%;
+}
+
+.fieldsetDatos legend
+{
+    border: 1px solid grey;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.contenedorInput
+{
+    display:block;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+label{
+    display: block;
+}
