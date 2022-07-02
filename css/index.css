@@ -1,7 +1,6 @@
 .fieldsetDatos
 {
     margin:auto;
-    margin-top: 60px;
     width: 60%;
 }
 
@@ -20,6 +19,18 @@
     text-align: center;
 }
 
-label{
+.inputInvalido
+{
+    color: red;
+}
+
+h1
+{
+    text-align: center;
+    margin: 25px;
+}
+
+label
+{
     display: block;
 }
