@@ -24,6 +24,16 @@
     color: red;
 }
 
+.captchaOk
+{
+    background-color: green;
+}
+
+.captchaFail
+{
+    background-color: red;
+}
+
 h1
 {
     text-align: center;

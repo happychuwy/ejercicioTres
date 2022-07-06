@@ -20,6 +20,8 @@
 */
     include("sanitizarFormulario.php");
     include("captcha.php");
+    $valCaptcha=captcha();
+    echo "<script>console.log('Valor del captcha: '+".$valCaptcha.");</script>";
 ?>
 
 <html>
@@ -67,8 +69,8 @@
 
                 <div class="contenedorInput">
                     <label></label>
-                    <input type="hidden" name="captcha" >
-                    <input type="button" name="captchaButton" value="captcha" onclick="document.write('<?php captcha() ?>');">
+                    <input type="hidden" name="captcha" value="<?php captcha(); ?>" >
+                    <input type="button" name="captchaButton" class="<?php if($valCaptcha>6) { echo "captchaOk";} else{echo "captchaFail";}; ?>" value="<?php if($valCaptcha>6) { echo "logró el captcha";} else{echo "falló el captcha";}; ?>" >
                 </div>
 
                 <div class="contenedorInput">

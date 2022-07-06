@@ -1,5 +1,7 @@
 <?php
 
+include("enviarCorreo.php");
+
 if(isset($_POST['enviar']))
 {
     if(empty($nombre))
@@ -65,6 +67,9 @@ if(isset($_POST['enviar']))
     {
         echo "<div>".$mensaje."</div>";
     }
+
+    $resultCorreo = enviarCorreo();
+    echo "<div>".$resultCorreo."</div>";
 }
 
 ?>
