@@ -2,8 +2,11 @@
 
 include("enviarCorreo.php");
 
+$bandVal=0;
+
 if(isset($_POST['enviar']))
 {
+    $datos="";
     if(empty($nombre))
     {
         echo "<div class='inputInvalido'>Escribe un nombre</div>";
@@ -14,6 +17,8 @@ if(isset($_POST['enviar']))
     }
     else{
         echo "<div>".$nombre."</div>";
+        $datos.=$nombre."<br>";
+        $bandVal++;
     }
 
     if(empty($email))
@@ -27,6 +32,8 @@ if(isset($_POST['enviar']))
     else
     {
         echo "<div>".$email."</div>";
+        $datos.=$email."<br>";
+        $bandVal++;
     }
 
     if(empty($telefono))
@@ -40,6 +47,8 @@ if(isset($_POST['enviar']))
     else
     {
         echo "<div>".$telefono."</div>";
+        $datos.=$telefono."<br>";
+        $bandVal++;
     }
 
     if(empty($tema))
@@ -53,6 +62,8 @@ if(isset($_POST['enviar']))
     else
     {
         echo "<div>".$tema."</div>";
+        $datos.=$tema."<br>";
+        $bandVal++;
     }
 
     if(empty($mensaje))
@@ -66,10 +77,42 @@ if(isset($_POST['enviar']))
     else
     {
         echo "<div>".$mensaje."</div>";
+        $datos.=$mensaje."<br>";
+        $bandVal++;
     }
 
-    $resultCorreo = enviarCorreo();
-    echo "<div>".$resultCorreo."</div>";
+    if(!empty($captcha))
+    {
+        //echo "<div class='inputInvalido'>Escribe un nombre</div>";
+        echo "<div>datos: ".$captcha."</div>";
+        if((int)$captcha > 9)
+        {
+            $resultCorreo = enviarCorreo($datos);
+            if(!$resultCorreo)
+            {
+                echo "<div>".$resultCorreo."</div>";
+            }
+        }
+        if($captcha > 6 )
+        {
+            $bandVal++;
+        }
+    }
+
+    echo "<div>contador: ".$bandVal."</di>";
+
+    if($bandVal==6 && $captcha>6)
+    {
+        header("Location: success.php");
+        die();  
+    }
+    else{
+        header("Location: fail.php");
+        die();
+    }
+
+    //$resultCorreo = enviarCorreo($datos);
+    //echo "<div>".$resultCorreo."</div>";
 }
 
 ?>

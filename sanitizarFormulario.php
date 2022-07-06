@@ -7,5 +7,6 @@
         $telefono = filter_var(str_replace($signos,"",$_POST['telefono']), FILTER_SANITIZE_NUMBER_INT);
         $tema = filter_var($_POST['tema'], FILTER_SANITIZE_STRING);
         $mensaje = filter_var($_POST['mensaje'], FILTER_SANITIZE_STRING);
+        $captcha = $_POST['captcha'];
     }
 ?>

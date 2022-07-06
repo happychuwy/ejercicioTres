@@ -69,7 +69,7 @@
 
                 <div class="contenedorInput">
                     <label></label>
-                    <input type="hidden" name="captcha" value="<?php captcha(); ?>" >
+                    <input type="hidden" name="captcha" value="<?php echo $valCaptcha ?>" >
                     <input type="button" name="captchaButton" class="<?php if($valCaptcha>6) { echo "captchaOk";} else{echo "captchaFail";}; ?>" value="<?php if($valCaptcha>6) { echo "logró el captcha";} else{echo "falló el captcha";}; ?>" >
                 </div>
 
