@@ -99,7 +99,7 @@ if(isset($_POST['enviar']))
         }
     }
 
-    echo "<div>contador: ".$bandVal."</di>";
+    //echo "<div>contador: ".$bandVal."</di>";
 
     if($captcha<6){
         
