@@ -101,15 +101,28 @@ if(isset($_POST['enviar']))
 
     echo "<div>contador: ".$bandVal."</di>";
 
+    if($captcha<6){
+        
+        $arregloDatos = array('nombre'=> $nombre, 'email'=> $email, 'telefono'=> $telefono, 'tema'=> $tema, 'mensaje'=> $mensaje);
+
+        //Creamos el JSON
+        $json_string = json_encode($arregloDatos);
+        $file = 'logs.json';
+        file_put_contents($file, $json_string);
+    }
+
     if($bandVal==6 && $captcha>6)
     {
         header("Location: success.php");
         die();  
     }
-    else{
+    else
+    {
         header("Location: fail.php");
         die();
     }
+
+    
 
     //$resultCorreo = enviarCorreo($datos);
     //echo "<div>".$resultCorreo."</div>";
